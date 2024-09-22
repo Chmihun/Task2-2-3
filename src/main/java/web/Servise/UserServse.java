@@ -2,7 +2,7 @@ package web.Servise;
 
 import org.springframework.stereotype.Service;
 import web.DAO.CarDAO;
-import web.model.Car;
+import web.model.Users;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ public class CarServse {
         this.carDao = carDao;
     }
 
-    public List<Car> getCars(int count) {
-        List<Car> allCars = carDao.index();
+    public List<Users> getCars(int count) {
+        List<Users> allUsers = carDao.index();
         if (count >= 5) {
-            return allCars;
+            return allUsers;
         }
-        if (count > allCars.size()) {
-            count = allCars.size();
+        if (count > allUsers.size()) {
+            count = allUsers.size();
         }
-        return allCars.subList(0, count);
+        return allUsers.subList(0, count);
     }
 }
