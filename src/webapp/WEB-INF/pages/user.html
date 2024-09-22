@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CARS</title>
+    <title>USER</title>
 </head>
 <body>
 
 <h1>Cars List</h1>
 <ul>
-    <li th:each="car : ${cars}" th:text="${car.model} + ' - ' +
-     ${car.engine} + ' - ' + ${car.serial}">Car Details</li>
+    <li th:each="user : ${user}" th:text="${user.name} + ' - ' +
+     ${user.surname} + ' - ' + ${user.year}">Car Details</li>
 </ul>
 
 </body>
