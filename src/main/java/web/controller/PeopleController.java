@@ -3,9 +3,8 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 //import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PathVariable;
 //import web.DAO.CarDAO;
 import web.DAO.PersonDAO;
 import web.Servise.UserServse;
@@ -28,12 +27,17 @@ public class PeopleController {
     @GetMapping("/people/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         Person person = personDAO.show(id);
-        if (person != null) {
             model.addAttribute("person", person);
             return "show";
-        } else {
-            model.addAttribute("error", "Человек не найден");
-            return "error"; // взглянуть на страницу ошибки
-        }
+
     }
+@GetMapping("/new")
+    public String newPerson(@ModelAttribute("person") Person person){
+        return "new";
+}
+@PostMapping()
+    public String create(@ModelAttribute("person") Person person){
+        personDAO.save(person);
+        return "redirect:/";
+}
 }
